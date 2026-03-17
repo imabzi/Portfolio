@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-bg: #F8F7F4;
+  --color-ink: #1A1A1A;
+  --color-accent: #3B82F6;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-ink font-sans selection:bg-accent/20;
+  }
+
+  body,
+  body * {
+    transition: background-color 220ms ease, border-color 220ms ease, color 220ms ease;
+  }
+
+  body.theme-dark {
+    --color-bg: #0b1320;
+    --color-ink: #f4f2ec;
+    --color-accent: #8aaef8;
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+  }
+
+  body.theme-light {
+    --color-bg: #f8f7f4;
+    --color-ink: #1a1a1a;
+    --color-accent: #3b82f6;
+  }
+}
+
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
+}
+
+.dock-item {
+  @apply flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 hover:bg-black/5 relative;
+}
+
+.dock-tooltip {
+  @apply absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-ink text-white text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest font-bold;
+}
+
+body.theme-dark .glass {
+  @apply border-white/10 bg-white/8;
+}
