@@ -1,4 +1,7 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Home, 
@@ -41,8 +44,8 @@ import {
   Sun,
   Languages
 } from 'lucide-react';
-import { SplineDesign } from './components/ThreeScene';
-import { PortfolioSection } from './components/PortfolioSection';
+import { SplineDesign } from '@/components/ThreeScene';
+import { PortfolioSection } from '@/components/PortfolioSection';
 
 // --- Types ---
 type Section = 'home' | 'about' | 'portfolio' | 'resume';
@@ -242,7 +245,7 @@ const PortfolioPopup = ({ project, isOpen, onClose }: { project: any, isOpen: bo
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.9, opacity: 0, y: 20 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
-        className="relative w-full max-w-[92%] md:max-w-[85%] xl:max-w-[70%] bg-white rounded-[24px] p-6 md:p-8 xl:p-12 max-h-[90vh] overflow-y-auto shadow-2xl"
+        className="relative w-full max-w-[92%] md:max-w-[85%] xl:max-w-[70%] bg-bg text-ink rounded-[24px] p-6 md:p-8 xl:p-12 max-h-[90vh] overflow-y-auto shadow-2xl"
       >
         <button 
           onClick={onClose}
@@ -278,8 +281,8 @@ const PortfolioPopup = ({ project, isOpen, onClose }: { project: any, isOpen: bo
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
                     {content?.images.map((img, i) => (
-                      <div key={i} className="aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 border border-ink/5">
-                        <img src={img} alt="Design sample" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                      <div key={i} className="aspect-[4/3] rounded-xl overflow-hidden bg-ink/5 border border-ink/5 relative">
+                        <Image src={img} alt="Design sample" fill className="object-cover" referrerPolicy="no-referrer" />
                       </div>
                     ))}
                   </div>
@@ -289,7 +292,7 @@ const PortfolioPopup = ({ project, isOpen, onClose }: { project: any, isOpen: bo
           </div>
 
           <div className="pt-4">
-            <button className="bg-ink text-white px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest hover:scale-[1.03] hover:rotate-[2deg] transition-all duration-250 ease-out shadow-lg shadow-ink/10">
+            <button className="bg-ink text-bg px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest hover:scale-[1.03] hover:rotate-[2deg] transition-all duration-250 ease-out shadow-lg shadow-ink/10">
               {content?.buttonText}
             </button>
           </div>
@@ -552,7 +555,7 @@ const ExperienceSection = ({ copy, theme }: { copy: Copy; theme: ThemeMode }) =>
   <section className={`pt-[40px] md:pt-[64px] xl:pt-[80px] pb-18 md:pb-20 px-5 md:px-8 xl:px-12 ${theme === 'dark' ? 'bg-transparent' : 'bg-white'}`}>
     <div className="w-full max-w-[92%] md:max-w-[90%] xl:max-w-[1200px] mx-auto">
       <div className="flex items-center gap-3 mb-16">
-        <div className="w-10 h-10 rounded-2xl bg-ink/5 flex items-center justify-center">
+        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center ${theme === 'dark' ? 'bg-white/10' : 'bg-ink/5'}`}>
           <Briefcase className="w-5 h-5 opacity-40" />
         </div>
         <h2 className="text-4xl font-bold tracking-tight">{copy.sections.experience}</h2>
@@ -566,10 +569,10 @@ const ExperienceSection = ({ copy, theme }: { copy: Copy; theme: ThemeMode }) =>
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
-            className="p-10 rounded-[40px] bg-bg border border-ink/5 hover:border-accent/20 transition-all duration-300 group hover:scale-[1.02] hover:rotate-2"
+            className={`p-10 rounded-[40px] border transition-all duration-300 group hover:scale-[1.02] hover:rotate-2 ${theme === 'dark' ? 'bg-white/5 border-white/10 hover:border-accent/20' : 'bg-bg border-ink/5 hover:border-accent/20'}`}
           >
-            <div className="w-14 h-14 mb-8 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-ink/5">
-              <img src={exp.logo} alt={exp.company} className="max-w-[70%] max-h-[70%] object-contain opacity-60 group-hover:opacity-100 transition-opacity" referrerPolicy="no-referrer" />
+            <div className={`w-14 h-14 mb-8 flex items-center justify-center rounded-2xl shadow-sm border relative ${theme === 'dark' ? 'bg-[#111a28] border-white/10' : 'bg-white border-ink/5'}`}>
+              <Image src={exp.logo} alt={exp.company} fill className="object-contain opacity-60 group-hover:opacity-100 transition-opacity p-2" referrerPolicy="no-referrer" />
             </div>
             <div className="mb-6">
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent mb-2 block">{exp.period}</span>
@@ -587,11 +590,12 @@ const ExperienceSection = ({ copy, theme }: { copy: Copy; theme: ThemeMode }) =>
 const AboutSection = () => (
   <section id="about" className="pt-[40px] md:pt-[64px] xl:pt-[80px] pb-18 md:pb-20 px-5 md:px-8 xl:px-12 w-full max-w-[92%] md:max-w-[90%] xl:max-w-[1200px] mx-auto">
     <div className="backdrop-blur-[20px] bg-white/12 rounded-[24px] p-6 md:p-8 xl:p-12 flex flex-col md:flex-row items-center gap-12 md:gap-16 overflow-hidden border border-white/20">
-      <div className="w-full md:w-[280px] flex-shrink-0">
-        <img 
-          src="/api/files/64-0.png" 
+      <div className="w-full md:w-[280px] flex-shrink-0 relative aspect-square">
+        <Image 
+          src="/me.png" 
           alt="Ayub Banaizade" 
-          className="w-full h-auto object-contain"
+          fill
+          className="object-contain"
           referrerPolicy="no-referrer"
         />
       </div>
@@ -601,10 +605,10 @@ const AboutSection = () => (
           Creative professional with more than 10 years of experience in visual storytelling, branding, motion graphics, and digital content creation.
         </p>
         <p className="text-[14px] md:text-[15px] xl:text-[16px] text-ink/50 mb-10 leading-[1.5] font-medium">
-          I've always loved beautiful things. Because they're pretty, because beauty reflects intention and care. Finding the right materials, tools, or systems and putting them in service of a clear vision, that's where true value lies.
+          I&apos;ve always loved beautiful things. Because they&apos;re pretty, because beauty reflects intention and care. Finding the right materials, tools, or systems and putting them in service of a clear vision, that&apos;s where true value lies.
         </p>
         <div className="flex items-center gap-6">
-          <button className="bg-ink text-white px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest hover:scale-[1.03] hover:rotate-[2deg] transition-all duration-250 ease-out flex items-center gap-3 shadow-lg shadow-ink/10">
+          <button className="bg-ink text-bg px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest hover:scale-[1.03] hover:rotate-[2deg] transition-all duration-250 ease-out flex items-center gap-3 shadow-lg shadow-ink/10">
             About Me <ArrowRight className="w-5 h-5" />
           </button>
           <button 
@@ -612,7 +616,7 @@ const AboutSection = () => (
               const el = document.getElementById('resume');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="border-2 border-ink/10 px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-ink hover:text-white hover:scale-[1.03] hover:-rotate-[2deg] transition-all duration-250 ease-out"
+            className="border-2 border-ink/10 px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest hover:bg-ink hover:text-bg hover:scale-[1.03] hover:-rotate-[2deg] transition-all duration-250 ease-out"
           >
             Resume
           </button>
@@ -637,12 +641,14 @@ const AboutSectionMinimal = ({
     <div className="overflow-visible rounded-[34px] border border-[#666666] bg-transparent p-6 shadow-[0_22px_70px_rgba(15,23,42,0.09)] md:p-8 xl:p-10">
       <div className="grid items-center gap-8 md:grid-cols-[30%_70%] md:gap-10">
         <div className="order-2 relative flex justify-center md:order-1 md:justify-start">
-          <div className="relative w-full max-w-[280px] md:max-w-none">
+          <div className="relative w-full max-w-[280px] md:max-w-none aspect-square">
             <div className="pointer-events-none absolute inset-x-[50%] bottom-[8%] h-10 rounded-full bg-ink/10 blur-2xl md:bottom-0" />
-            <img
+            <Image
               src="/me.png"
               alt="Ayub Banaizade"
-              className="relative z-10 block w-full h-auto scale-[1.24] translate-y-6 object-contain drop-shadow-[0_24px_40px_rgba(15,23,42,0.16)] md:translate-x-[-6%] md:translate-y-8 md:scale-[1.28]"
+              fill
+              className="relative z-10 block scale-[1.24] translate-y-6 object-contain drop-shadow-[0_24px_40px_rgba(15,23,42,0.16)] md:translate-x-[-6%] md:translate-y-8 md:scale-[1.28]"
+              referrerPolicy="no-referrer"
             />
           </div>
         </div>
@@ -675,11 +681,11 @@ const AboutSectionMinimal = ({
   </section>
 );
 
-const Testimonials = ({ copy }: { copy: Copy }) => (
-  <section className="pt-[40px] md:pt-[64px] xl:pt-[80px] pb-18 md:pb-20 px-5 md:px-8 xl:px-12 bg-ink text-white overflow-hidden">
+const Testimonials = ({ copy, theme }: { copy: Copy; theme: ThemeMode }) => (
+  <section className={`pt-[40px] md:pt-[64px] xl:pt-[80px] pb-18 md:pb-20 px-5 md:px-8 xl:px-12 overflow-hidden ${theme === 'dark' ? 'bg-[#111a28] text-white' : 'bg-ink text-white'}`}>
     <div className="w-full max-w-[92%] md:max-w-[90%] xl:max-w-[1200px] mx-auto">
       <div className="flex items-center gap-3 mb-16">
-        <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center">
+        <div className={`w-10 h-10 rounded-2xl flex items-center justify-center ${theme === 'dark' ? 'bg-white/10' : 'bg-white/10'}`}>
           <Smile className="w-5 h-5 opacity-40" />
         </div>
         <h2 className="text-4xl font-bold tracking-tight">{copy.sections.testimonials}</h2>
@@ -714,9 +720,9 @@ const Testimonials = ({ copy }: { copy: Copy }) => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="p-10 rounded-[40px] bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group hover:scale-[1.02] hover:rotate-2"
+            className={`p-10 rounded-[40px] border transition-all duration-300 group hover:scale-[1.02] hover:rotate-2 ${theme === 'dark' ? 'bg-white/5 border-white/10 hover:bg-white/10' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}
           >
-            <p className="text-sm text-white/70 mb-10 leading-relaxed italic font-medium">"{t.quote}"</p>
+            <p className={`text-sm mb-10 leading-relaxed italic font-medium ${theme === 'dark' ? 'text-white/70' : 'text-white/70'}`}>&quot;{t.quote}&quot;</p>
             <div>
               <h4 className="font-bold text-base mb-1">{t.name}</h4>
               <p className="text-[10px] opacity-40 uppercase tracking-[0.2em] font-bold">{t.role}</p>
@@ -852,11 +858,11 @@ const ResumeItem = ({
     <div className="relative group py-8 first:pt-0 last:pb-0">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-4 flex-1">
-          <div className={`w-10 h-10 rounded-lg border flex items-center justify-center p-2 shadow-sm flex-shrink-0 mt-1 ${theme === 'dark' ? 'bg-[#111a28] border-white/10' : 'bg-white border-ink/5'}`}>
+          <div className={`w-10 h-10 rounded-lg border flex items-center justify-center p-2 shadow-sm flex-shrink-0 mt-1 relative ${theme === 'dark' ? 'bg-white/10 border-white/10' : 'bg-white border-ink/5'}`}>
             {logo ? (
-              <img src={logo} alt={company} className="max-w-full max-h-full object-contain" referrerPolicy="no-referrer" />
+              <Image src={logo} alt={company} fill className="object-contain p-1" referrerPolicy="no-referrer" />
             ) : (
-              <Briefcase className={`w-5 h-5 ${theme === 'dark' ? 'text-[#0d1522]' : 'text-ink/20'}`} />
+              <Briefcase className={`w-5 h-5 ${theme === 'dark' ? 'text-white/60' : 'text-ink/40'}`} />
             )}
           </div>
           <div className="flex-1">
@@ -866,12 +872,12 @@ const ResumeItem = ({
               </h3>
               <button 
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="p-1 hover:bg-ink/5 rounded-full transition-colors duration-250 ease-out"
+                className={`p-1 rounded-full transition-colors duration-250 ease-out ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-ink/5'}`}
               >
                 {isExpanded ? (
-                  <Minus className={`w-4 h-4 ${theme === 'dark' ? 'text-[#0d1522]' : 'text-ink/20'}`} />
+                  <Minus className={`w-4 h-4 ${theme === 'dark' ? 'text-white/60' : 'text-ink/40'}`} />
                 ) : (
-                  <Plus className={`w-4 h-4 ${theme === 'dark' ? 'text-[#0d1522]' : 'text-ink/20'}`} />
+                  <Plus className={`w-4 h-4 ${theme === 'dark' ? 'text-white/60' : 'text-ink/40'}`} />
                 )}
               </button>
             </div>
@@ -913,8 +919,8 @@ const ResumeItem = ({
             {media && (
               <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide mt-4">
                 {media.map((img: string, idx: number) => (
-                  <div key={idx} className="flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 border border-ink/5 w-40 aspect-[4/3]">
-                    <img src={img} alt="Work sample" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <div key={idx} className="flex-shrink-0 rounded-xl overflow-hidden bg-ink/5 border border-ink/5 w-40 aspect-[4/3] relative">
+                    <Image src={img} alt="Work sample" fill className="object-cover" referrerPolicy="no-referrer" />
                   </div>
                 ))}
               </div>
@@ -970,34 +976,34 @@ const Dock = ({ activeSection, isSidebarOpen, copy, theme }: { activeSection: Se
       onMouseLeave={() => setIsHovered(false)}
       className={`fixed bottom-8 left-1/2 z-50 hidden -translate-x-1/2 md:block ${isSidebarOpen ? 'md:left-[calc(50%+160px)]' : 'md:left-1/2'}`}
     >
-      <div className="glass px-4 py-2 rounded-full flex items-center gap-2">
+      <div className={`px-4 py-2 rounded-full flex items-center gap-2 backdrop-blur-md border shadow-lg ${theme === 'dark' ? 'bg-white/10 border-white/10' : 'bg-white/70 border-white/20'}`}>
         <button 
           onClick={() => scrollToSection('home')} 
-          className={`dock-item group ${activeSection === 'home' ? activeDockClass : ''}`}
+          className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 relative group ${activeSection === 'home' ? activeDockClass : (theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5')}`}
         >
-          <Home className="w-5 h-5" />
-          <span className="dock-tooltip">{copy.nav.home}</span>
+          <Home className={`w-5 h-5 ${activeSection !== 'home' ? (theme === 'dark' ? 'text-white/60 group-hover:text-white' : 'text-ink/60 group-hover:text-ink') : ''}`} />
+          <span className={`absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest font-bold ${theme === 'dark' ? 'bg-white text-[#0b1320]' : 'bg-ink text-white'}`}>{copy.nav.home}</span>
         </button>
         <button 
           onClick={() => scrollToSection('about')} 
-          className={`dock-item group ${activeSection === 'about' ? activeDockClass : ''}`}
+          className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 relative group ${activeSection === 'about' ? activeDockClass : (theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5')}`}
         >
-          <User className="w-5 h-5" />
-          <span className="dock-tooltip">{copy.nav.about}</span>
+          <User className={`w-5 h-5 ${activeSection !== 'about' ? (theme === 'dark' ? 'text-white/60 group-hover:text-white' : 'text-ink/60 group-hover:text-ink') : ''}`} />
+          <span className={`absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest font-bold ${theme === 'dark' ? 'bg-white text-[#0b1320]' : 'bg-ink text-white'}`}>{copy.nav.about}</span>
         </button>
         <button 
           onClick={() => scrollToSection('portfolio')} 
-          className={`dock-item group ${activeSection === 'portfolio' ? activeDockClass : ''}`}
+          className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 relative group ${activeSection === 'portfolio' ? activeDockClass : (theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5')}`}
         >
-          <Briefcase className="w-5 h-5" />
-          <span className="dock-tooltip">{copy.nav.portfolio}</span>
+          <Briefcase className={`w-5 h-5 ${activeSection !== 'portfolio' ? (theme === 'dark' ? 'text-white/60 group-hover:text-white' : 'text-ink/60 group-hover:text-ink') : ''}`} />
+          <span className={`absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest font-bold ${theme === 'dark' ? 'bg-white text-[#0b1320]' : 'bg-ink text-white'}`}>{copy.nav.portfolio}</span>
         </button>
         <button 
           onClick={() => scrollToSection('resume')} 
-          className={`dock-item group ${activeSection === 'resume' ? activeDockClass : ''}`}
+          className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 relative group ${activeSection === 'resume' ? activeDockClass : (theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5')}`}
         >
-          <FileText className="w-5 h-5" />
-          <span className="dock-tooltip">{copy.nav.resume}</span>
+          <FileText className={`w-5 h-5 ${activeSection !== 'resume' ? (theme === 'dark' ? 'text-white/60 group-hover:text-white' : 'text-ink/60 group-hover:text-ink') : ''}`} />
+          <span className={`absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest font-bold ${theme === 'dark' ? 'bg-white text-[#0b1320]' : 'bg-ink text-white'}`}>{copy.nav.resume}</span>
         </button>
       </div>
     </motion.div>
@@ -1062,11 +1068,13 @@ const Sidebar = ({
         </button>
         <div className={`mt-12 flex flex-col ${language === 'fa' ? 'items-end text-right' : 'items-start text-left'}`}>
         <div className="relative mb-8">
-          <div className={`w-[96px] overflow-hidden rounded-[32px] border md:w-[120px] md:rounded-[40px] ${theme === 'dark' ? 'border-white/16' : 'border-[#b8b8b8]'}`}>
-            <img 
+          <div className={`w-[96px] overflow-hidden rounded-[32px] border md:w-[120px] md:rounded-[40px] relative aspect-square ${theme === 'dark' ? 'border-white/16' : 'border-[#b8b8b8]'}`}>
+            <Image 
               src="/Profile(SideBar).jpg" 
               alt="Ayub Banaizade" 
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              referrerPolicy="no-referrer"
             />
           </div>
         </div>
@@ -1148,7 +1156,7 @@ const Sidebar = ({
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<Section>('home');
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [theme, setTheme] = useState<ThemeMode>('light');
   const [language, setLanguage] = useState<Language>('en');
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -1177,7 +1185,7 @@ export default function App() {
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 768px)');
     const syncSidebar = (_event?: MediaQueryListEvent) => {
-      setIsSidebarOpen(true);
+      // Sidebar is closed by default
     };
 
     syncSidebar();
@@ -1282,7 +1290,7 @@ Roles & Responsibilities:
                 <div className="relative group py-8">
                   <div className="flex items-start gap-4">
                     <div className={`w-10 h-10 rounded-lg flex items-center justify-center p-2 shadow-sm flex-shrink-0 mt-1 ${theme === 'dark' ? 'bg-[#111a28] border border-white/10' : 'bg-white border border-ink/5'}`}>
-                      <Briefcase className={`w-5 h-5 ${theme === 'dark' ? 'text-[#0d1522]' : 'text-ink/20'}`} />
+                      <Briefcase className={`w-5 h-5 ${theme === 'dark' ? 'text-white/40' : 'text-ink/20'}`} />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-sm font-bold text-ink mb-1">Pezhvak Advertising & Marketing Agency</h3>
@@ -1361,8 +1369,8 @@ Roles & Responsibilities:
                   { name: 'CorelDRAW', icon: 'coreldraw' }
                 ].map((tool) => (
                   <div key={tool.name} className="flex flex-col items-center gap-3 group cursor-pointer">
-                    <div className="w-14 h-14 rounded-2xl bg-white border border-ink/5 flex items-center justify-center p-3.5 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300 grayscale group-hover:grayscale-0">
-                      <img src={`https://picsum.photos/seed/${tool.icon}/100/100`} alt={tool.name} className="w-full h-full object-contain rounded-md" referrerPolicy="no-referrer" />
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center p-3.5 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300 grayscale group-hover:grayscale-0 relative ${theme === 'dark' ? 'bg-[#111a28] border border-white/10' : 'bg-white border border-ink/5'}`}>
+                      <Image src={`https://picsum.photos/seed/${tool.icon}/100/100`} alt={tool.name} fill className="object-contain rounded-md p-2" referrerPolicy="no-referrer" />
                     </div>
                     <span className="text-[9px] font-bold text-ink/30 uppercase tracking-[0.15em] text-center group-hover:text-ink/60 transition-colors">{tool.name}</span>
                   </div>
@@ -1378,7 +1386,7 @@ Roles & Responsibilities:
                   <h3 className="text-sm font-bold text-ink">Islamic Azad University</h3>
                   <span className="text-[10px] font-bold text-ink/30 uppercase tracking-widest">2015 – 2017</span>
                 </div>
-                <p className="text-sm text-ink/60 mb-4">Bachelor's Degree in Illustration <span className="mx-2 opacity-30">|</span> Grade: 17</p>
+                <p className="text-sm text-ink/60 mb-4">Bachelor&apos;s Degree in Illustration <span className="mx-2 opacity-30">|</span> Grade: 17</p>
                 <div className="flex flex-wrap gap-2">
                   {['Adobe InDesign', 'Adobe Illustrator', 'Visual Arts', 'Creative Direction', 'Branding', 'Layout Design'].map(skill => (
                     <span key={skill} className="px-2 py-1 bg-ink/5 rounded text-[10px] font-bold uppercase tracking-widest text-ink/40">{skill}</span>
@@ -1399,7 +1407,7 @@ Roles & Responsibilities:
                   <div key={i} className="flex items-start justify-between group">
                     <div className="flex items-center gap-4">
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center p-2 shadow-sm ${theme === 'dark' ? 'bg-[#111a28] border border-white/10' : 'bg-white border border-ink/5'}`}>
-                        <Plus className={`w-5 h-5 transition-opacity ${theme === 'dark' ? 'text-[#0d1522] opacity-70' : 'opacity-10 group-hover:opacity-40'}`} />
+                        <Plus className={`w-5 h-5 transition-opacity ${theme === 'dark' ? 'text-white/40 group-hover:text-white/70' : 'opacity-10 group-hover:opacity-40'}`} />
                       </div>
                       <div>
                         <h3 className="text-sm font-bold text-ink">{item.role} <span className="font-normal opacity-40 mx-1">@</span> {item.company}</h3>
@@ -1430,14 +1438,14 @@ Roles & Responsibilities:
                         <p className="text-[10px] text-ink/40 font-bold uppercase tracking-widest">{award.year}</p>
                       </div>
                     </div>
-                    <ArrowUpRight className={`w-4 h-4 transition-opacity ${theme === 'dark' ? 'text-[#0d1522] opacity-70' : 'opacity-10 group-hover:opacity-40'}`} />
+                    <ArrowUpRight className={`w-4 h-4 transition-opacity ${theme === 'dark' ? 'text-white/40 group-hover:text-white/70' : 'opacity-10 group-hover:opacity-40'}`} />
                   </div>
                 ))}
               </div>
             </div>
           </section>
 
-          <Testimonials copy={copy} />
+          <Testimonials copy={copy} theme={theme} />
           <ExperienceSection copy={copy} theme={theme} />
         </main>
 

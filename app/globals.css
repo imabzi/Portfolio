@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
   
   --color-bg: #F8F7F4;
   --color-ink: #1A1A1A;
@@ -46,6 +46,14 @@
 
 .dock-tooltip {
   @apply absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-ink text-white text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap uppercase tracking-widest font-bold;
+}
+
+body.theme-dark .dock-tooltip {
+  @apply bg-white text-[#0b1320];
+}
+
+body.theme-dark .dock-item {
+  @apply hover:bg-white/10;
 }
 
 body.theme-dark .glass {

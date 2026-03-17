@@ -1,4 +1,6 @@
-﻿import { useEffect, useState } from 'react';
+'use client';
+
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import {
   Layout,
@@ -447,6 +449,7 @@ function UIUXPopup({
   }, [isOpen, onClose]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (isOpen) setExpandedProjectId(UIUX_PROJECTS[0].id);
   }, [isOpen]);
 
