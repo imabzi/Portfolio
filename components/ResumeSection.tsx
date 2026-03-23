@@ -15,12 +15,7 @@ import type { ThemeMode } from "@/lib/types";
 import type { Copy } from "@/lib/data";
 import {
   RESUME_ITEMS,
-  ADDITIONAL_RESUME_ITEMS,
-  PEZHVAK_ROLES,
-  SKILLS,
-  INVOLVEMENTS,
   ACHIEVEMENTS,
-  EDUCATION_SKILLS,
   SIDEBAR_SKILLS,
 } from "@/lib/data";
 
