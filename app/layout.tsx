@@ -1,8 +1,8 @@
 import type {Metadata} from 'next';
-import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google';
+import { Inter, Playfair_Display, JetBrains_Mono, Exo_2 } from 'next/font/google';
 import './globals.css'; // Global styles
 
-const inter = Inter({
+const exo2 = Exo_2({
   subsets: ['latin'],
   variable: '--font-sans',
 });
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${exo2.variable} ${playfair.variable} ${jetbrainsMono.variable}`}>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );

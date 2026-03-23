@@ -12,7 +12,7 @@ import {
   X,
 } from 'lucide-react';
 
-type ThemeMode = 'light' | 'dark';
+import type { ThemeMode } from '@/lib/types';
 type PortfolioVersion = 'desktop' | 'app';
 type PortfolioCategory = 'ui-ux' | 'branding' | 'video';
 
