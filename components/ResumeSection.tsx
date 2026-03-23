@@ -47,18 +47,18 @@ function ResumeItem({
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="relative group py-8 first:pt-0 last:pb-0">
+    <div className="relative group py-4 first:pt-0 last:pb-0">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-4 flex-1">
           <div
-            className={`w-10 h-10 rounded-lg border flex items-center justify-center p-2 shadow-sm flex-shrink-0 mt-1 relative ${theme === "dark" ? "bg-white/10 border-white/10" : "bg-white border-ink/5"}`}
+            className={`size-16 rounded-lg border flex items-center justify-center overflow-hidden shadow-sm flex-shrink-0 mt-1 relative ${theme === "dark" ? "bg-white/10 border-white/10" : "bg-white border-ink/5"}`}
           >
             {logo ? (
               <Image
                 src={logo}
                 alt={company}
                 fill
-                className="object-contain p-1"
+                className="object-contain"
                 referrerPolicy="no-referrer"
               />
             ) : (
@@ -182,9 +182,6 @@ export function ResumeSection({
           {copy.sections.resume}
         </h2>
         <div className="h-[2px] w-[64px] bg-ink/10 rounded-full mb-3" />
-        <p className="text-lg font-light text-ink/40 leading-relaxed mt-2">
-          {copy.sections.resumeDescription}
-        </p>
       </div>
 
       {/* Experience */}

@@ -751,9 +751,6 @@ export function PortfolioSection({
             {copy.sections.portfolio}
           </h2>
           <div className="mb-3 h-[2px] w-[64px] rounded-full bg-ink/10" />
-          <p className="mt-2 max-w-2xl text-lg font-light leading-relaxed text-ink/40">
-            {copy.sections.portfolioDescription}
-          </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">

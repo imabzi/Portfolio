@@ -3,7 +3,7 @@
 import { Menu, Moon, Sun, Languages, Download } from "lucide-react";
 import type { ThemeMode } from "@/lib/types";
 import type { Copy } from "@/lib/data";
-import { cn } from "@/lib/utils";
+import { cn, downloadPublicFile } from "@/lib/utils";
 
 export function Header({
   isSidebarOpen,
@@ -48,7 +48,7 @@ export function Header({
       </nav>
       <div className="flex items-center gap-3">
         <button
-          onClick={() => scrollToSection("resume")}
+          onClick={() => downloadPublicFile("/CV.pdf")}
           className={cn(
             `cursor-pointer flex-1 rounded-xl px-5 py-3 text-[11px] font-black uppercase tracking-[0.12em] transition-all duration-250 ease-out hover:rotate-[2deg] hover:scale-105`,
             "transition-opacity duration-300 ease-in opacity-85 hover:opacity-100 bg-[#f38c42] text-white shadow-[0_0_20px_3px_rgba(243,140,66,0.2)] hover:shadow-[0_0_30px_6px_rgba(243,140,66,0.5)] transition-shadow",

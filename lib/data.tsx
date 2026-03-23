@@ -141,6 +141,7 @@ export const RESUME_ITEMS: ResumeItemData[] = [
     type: "Full-time",
     period: "Aug 2024 – Present · 1 yr 8 mos",
     location: "Tehran County, Tehran Province, Iran",
+    logo: "/xp-logos/Samanehaye Modirat.jpg",
     description: `I have worked as a Senior Designer specializing in brand identity, visual design, motion graphics, videography, and UI/UX, creating a wide range of visual content for CRM products and in‑house brands. My role includes producing photography, video editing, motion ads, print materials, and digital assets, as well as contributing to exhibition materials, social media visuals, and UI redesigns for websites and applications. I have also gained practical experience with CRM systems, including workflow structures, modules, iteration cycles, and performance evaluation processes.`,
     skills: [
       "Brand Identity Designer",
@@ -158,6 +159,7 @@ export const RESUME_ITEMS: ResumeItemData[] = [
     type: "Full-time",
     period: "Mar 2023 - Apr 2024 · 1 yr 2 mos",
     location: "Tehran County, Tehran Province, Iran",
+    logo: "/xp-logos/Zibax.jpg",
     description:
       "I worked as a Graphic Designer at Zibax Beauty, creating a wide range of visual content through photography, videography, video editing, and developing creative concepts for product‑focused shoots. I managed social media visuals by designing posts and stories, planning content calendars, and publishing materials across platforms. Additionally, I designed various marketing assets—including price catalogs, product posters, and company introduction catalogs—and provided full design support for events, workshops, competitions, and showroom activities.",
     skills: [
@@ -165,12 +167,7 @@ export const RESUME_ITEMS: ResumeItemData[] = [
       "Video Editor",
       "Print Designer",
       "Digital Designer",
-    ],
-    media: [
-      "https://picsum.photos/seed/zibax-1/400/300",
-      "https://picsum.photos/seed/zibax-2/400/300",
-      "https://picsum.photos/seed/zibax-3/400/300",
-    ],
+    ]
   },
   {
     company: "Pezhvak Advertising & Marketing Agency",
@@ -178,6 +175,7 @@ export const RESUME_ITEMS: ResumeItemData[] = [
     type: "Full-time",
     period: "May 2017 – Mar 2023 · 8 yrs 6 mos",
     location: "Abadan County, Khuzestan Province, Iran",
+    logo: "/xp-logos/Pezhvak.jpg",
     description:
       "I worked as a Senior Designer at Pezhvak Advertising & Marketing Agency, where I developed complete brand identities—including logos, visual systems, and branding strategies—and designed a wide range of print and digital materials such as business cards, catalogs, posters, banners, and social media assets. I also produced video content through videography, editing, and motion graphics, while contributing to UI design for websites and applications.",
     skills: [
@@ -196,6 +194,7 @@ export const RESUME_ITEMS: ResumeItemData[] = [
     type: "Freelance",
     period: "Sep 2018 – Mar 2022 · 3 yrs 7 mos",
     location: "Abadan County, Khuzestan Province, Iran",
+    logo: "/xp-logos/3soot.jpg",
     description:
       "creating a variety of visual content ranging from social media graphics and print materials to motion‑based onboarding and loading animations for their application. Working remotely, I supported the brand’s visual presence and helped enhance the overall user experience through cohesive and engaging design.",
     skills: [
@@ -210,13 +209,9 @@ export const RESUME_ITEMS: ResumeItemData[] = [
     type: "Remote",
     period: "Sep 2021 – Nov 2021 · 3 mos",
     location: "Khorramshahr, Khuzestan Province, Iran",
+    logo: "/xp-logos/GLX.jpg",
     description:
       "creating mobile‑oriented video content through scripting, filming, and editing—especially unboxing and product‑intro videos optimized for social media. I also designed a variety of visual materials, including social media posts, stories, posters, and print assets, and refreshed items like business cards and shopping bags to strengthen the brand’s overall visual identity.",
-    projects: [
-      "Mobile UI Kit",
-      "Marketing Campaign Visuals",
-      "Product Photography Guidelines",
-    ],
     skills: [
       "Digital Marketer",
       "Social Media Designer",
@@ -233,6 +228,7 @@ export const RESUME_ITEMS: ResumeItemData[] = [
     type: "Full-time",
     period: "Mar 2018 – Apr 2020 · 2 yrs 2 mos",
     location: "Abadan, Khuzestan Province, Iran",
+    logo: "/xp-logos/Glamora.jpg",
     description:
       "focusing on product photography—from shooting and retouching to preparing images for seamless website integration. Alongside this, I designed website banners and a range of promotional materials, helping strengthen the brand’s visual presence across digital platforms.",
     skills: [
@@ -244,17 +240,6 @@ export const RESUME_ITEMS: ResumeItemData[] = [
       "Print Designer",
     ],
   },
-];
-
-export const PEZHVAK_ROLES = [
-  { title: "Senior Designer", period: "Oct 2019 – Mar 2023", isActive: true },
-  { title: "Graphic Designer", period: "Apr 2022 – Present", isActive: false },
-  {
-    title: "Motion Graphic Designer",
-    period: "May 2021 – Apr 2022",
-    isActive: false,
-  },
-  { title: "Photographer", period: "May 2017 – Apr 2022", isActive: false },
 ];
 
 export const SIDEBAR_SKILLS = [
